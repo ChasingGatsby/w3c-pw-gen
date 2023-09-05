@@ -13,7 +13,6 @@ var passLength = function() {
     alert("TOO SMALL")
   } else {
     var genLength = length
-    console.log(genLength)
     }
 }
 
