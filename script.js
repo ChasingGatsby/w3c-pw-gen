@@ -54,20 +54,34 @@ var random = function() {
   genPass.length = passCrit.length
   const genPool = [passCrit.uCase, passCrit.lCase, passCrit.num, passCrit.specCh]
   const min = 1
+  const ranCount = new Array(genpool.length).fill(0)
+  function renderItem() {
+    let randGenIndex;
+    do {
+      randGenIndex = Math.floor(Math.random() * genPass.length)
+    } while (ranCount[randGenIndex] >= min && ranCount.some((e) => e < min))
+  
+    ranCount[randGenIndex]++;
 
+    let randCharIndex = Math.floor(math.random()) * genPool[randGenIndex].length;
+    return genPool[randGenIndex][randCharIndex]
+  }
 }
 
 var generatePassword = function() {
   
   passLength();
   passUpCase();
-  passLowCase()
-  passNum()
-  passSpec()
-  for (let i = 0; i < genPass.length; i++) {
-    
-  }
-  outPass = genPass.toString()
+  passLowCase();
+  passNum();
+  passSpec();
+  var midPass = function () { 
+    for (let i = 0; i < genPass.length; i++) {
+      random()
+    }
+   return; 
+}
+  outPass = midPass().toString()
   return outPass
 }
 
