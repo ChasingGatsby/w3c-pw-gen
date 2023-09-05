@@ -5,7 +5,8 @@ var passCrit = {
   length: null,
   uCase: null,
   lCase: null,
-  specCh: null
+  specCh: null,
+  num: null
 
 }
 
@@ -34,19 +35,40 @@ var passLowCase = function() {
   }
 }
 
+function passNum () {
+  if (confirm ("Does your password need numeric characters?")) {
+    passCrit.num = '0123456789'.split('')
+  }
+
+}
+
 function passSpec () {
   if (confirm ("Does your password need special characters?")) {
     passCrit.specCh = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~".split("")
   }
 }
 
-function generatePassword() {
-  var genPass = []
+
+var genPass = []
+var random = function() {
+  genPass.length = passCrit.length
+  const genPool = [passCrit.uCase, passCrit.lCase, passCrit.num, passCrit.specCh]
+  const min = 1
+
+}
+
+var generatePassword = function() {
+  
   passLength();
   passUpCase();
   passLowCase()
-  genPass.length = passCrit.length
-  console.log (genPass)
+  passNum()
+  passSpec()
+  for (let i = 0; i < genPass.length; i++) {
+    
+  }
+  outPass = genPass.toString()
+  return outPass
 }
 
 
