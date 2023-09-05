@@ -2,9 +2,10 @@
 var generateBtn = document.querySelector("#generate");
 
 var passCrit = {
-  length: 0,
+  length: null,
   uCase: null,
   lCase: null,
+  specCh: null
 
 }
 
@@ -33,11 +34,19 @@ var passLowCase = function() {
   }
 }
 
+function passSpec () {
+  if (confirm ("Does your password need special characters?")) {
+    passCrit.specCh = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~".split("")
+  }
+}
+
 function generatePassword() {
+  var genPass = []
   passLength();
   passUpCase();
   passLowCase()
-  console.log (passCrit)
+  genPass.length = passCrit.length
+  console.log (genPass)
 }
 
 
