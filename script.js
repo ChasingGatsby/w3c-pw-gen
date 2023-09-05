@@ -12,23 +12,29 @@ var passLength = function() {
   } else if (length < 8) {
     alert("TOO SMALL")
   } else {
-    
+    var genLength = length
+    console.log(genLength)
     }
 }
 
 var passUpCase = function() {
- confirm("Does your password need uppercase letters?") 
-
+ if (confirm("Does your password need uppercase letters?")) {
+  var genUCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+ }
+ console.log(genUCase)
 }
 
 var passLowCase = function() {
-  confirm ("Does your password need lowercase letters?")
+  if (confirm ("Does your password need lowercase letters?")) {
+  var genLCase = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  }
+  console.log(genLCase)
 }
-
 
 function generatePassword() {
   passLength();
-  passUpCase()
+  passUpCase();
+  passLowCase()
 
 }
 
