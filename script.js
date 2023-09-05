@@ -2,40 +2,44 @@
 var generateBtn = document.querySelector("#generate");
 
 var passCrit = {
+  length: 0,
+  uCase: null,
+  lCase: null,
 
 }
 
-var passLength = function() {
-  let length = Number(prompt("Select a password length", "8-128 characters"))
-  if (length > 128) {
-    alert("TOO BIG")
-  } else if (length < 8) {
-    alert("TOO SMALL")
+function passLength() {
+  let inLength = Number(prompt("Select a password length (8-128 characters)"))
+  if (inLength > 128) {
+    alert("TOO BIG");
+    passLength()
+  } else if (inLength < 8) {
+    alert("TOO SMALL");
+    passLength()
   } else {
-    var genLength = length
-    }
+    passCrit.length = inLength
+  }
 }
 
 var passUpCase = function() {
  if (confirm("Does your password need uppercase letters?")) {
-  var genUCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+  passCrit.uCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
  }
- console.log(genUCase)
 }
 
 var passLowCase = function() {
   if (confirm ("Does your password need lowercase letters?")) {
-  var genLCase = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  passCrit.lCase = 'abcdefghijklmnopqrstuvwxyz'.split('')
   }
-  console.log(genLCase)
 }
 
 function generatePassword() {
   passLength();
   passUpCase();
   passLowCase()
-
+  console.log (passCrit)
 }
+
 
 // Write password to the #password input
 function writePassword() {
