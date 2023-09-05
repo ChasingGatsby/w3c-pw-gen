@@ -44,18 +44,19 @@ function passNum () {
 
 function passSpec () {
   if (confirm ("Does your password need special characters?")) {
-    passCrit.specCh = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~".split("")
+    passCrit.specCh = "!#$%&'()*+-./:;<=>?@[]^_`{|}~".split("")
+  } else {
+    passCrit.specCh = null
   }
+  
 }
 
 
-var genPass = []
 var random = function() {
-  genPass.length = passCrit.length
   const genPool = [passCrit.uCase, passCrit.lCase, passCrit.num, passCrit.specCh]
   const min = 1
-  const ranCount = new Array(genpool.length).fill(0)
-  function renderItem() {
+  const ranCount = new Array(genPool.length).fill(0)
+  var renderItem = function() {
     let randGenIndex;
     do {
       randGenIndex = Math.floor(Math.random() * genPass.length)
@@ -66,6 +67,7 @@ var random = function() {
     let randCharIndex = Math.floor(math.random()) * genPool[randGenIndex].length;
     return genPool[randGenIndex][randCharIndex]
   }
+  return renderItem();
 }
 
 var generatePassword = function() {
@@ -75,14 +77,15 @@ var generatePassword = function() {
   passLowCase();
   passNum();
   passSpec();
-  var midPass = function () { 
-    for (let i = 0; i < genPass.length; i++) {
-      random()
-    }
-   return; 
-}
-  outPass = midPass().toString()
-  return outPass
+  var genPass = []
+  genPass.length = passCrit.length
+  genPass.forEach((element, index) => {
+    genPass[index] = random ()
+  })
+  console.log(genPass)
+  finPass = genPass.toString()
+  console.log (finPass)
+  return finPass
 }
 
 
