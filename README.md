@@ -11,6 +11,7 @@ That understanding was really what pushed me through the rest of this project.
 
 ## Screenshot
 ![chasinggatsby github io_w3c-pw-gen_](https://github.com/ChasingGatsby/w3c-pw-gen/assets/139267337/d4b17fe4-45aa-4626-9540-09da493ed1d7)
+![prompt](https://github.com/ChasingGatsby/w3c-pw-gen/assets/139267337/f26d6cde-21f5-47c1-aa52-9509d4cfa878)
 
 
 ## Link to Deployed Application
