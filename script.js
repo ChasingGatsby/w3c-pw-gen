@@ -5,10 +5,12 @@ var passCrit = {
   length: null,
   uCase: null,
   lCase: null,
-  specCh: null,
+  spec: null,
   num: null
 
 }
+
+var genPass = []
 
 function passLength() {
   let inLength = Number(prompt("Select a password length (8-128 characters)"))
@@ -26,66 +28,59 @@ function passLength() {
 var passUpCase = function() {
  if (confirm("Does your password need uppercase letters?")) {
   passCrit.uCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+ } else {
+  passCrit.uCase = null;
  }
 }
 
 var passLowCase = function() {
   if (confirm ("Does your password need lowercase letters?")) {
   passCrit.lCase = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  } else {
+    passCrit.lCase = null
   }
 }
 
 function passNum () {
   if (confirm ("Does your password need numeric characters?")) {
     passCrit.num = '0123456789'.split('')
+  } else {
+    passCrit.num = null
   }
 
 }
 
 function passSpec () {
   if (confirm ("Does your password need special characters?")) {
-    passCrit.specCh = "!#$%&'()*+-./:;<=>?@[]^_`{|}~".split("")
+    passCrit.spec = "!#$%&'()*+-./:;<=>?@[]^_`{|}~".split("")
   } else {
-    passCrit.specCh = null
+    passCrit.spec = null
   }
   
 }
 
-
-var random = function() {
-  const genPool = [passCrit.uCase, passCrit.lCase, passCrit.num, passCrit.specCh]
-  const min = 1
-  const ranCount = new Array(genPool.length).fill(0)
-  var renderItem = function() {
-    let randGenIndex;
-    do {
-      randGenIndex = Math.floor(Math.random() * genPass.length)
-    } while (ranCount[randGenIndex] >= min && ranCount.some((e) => e < min))
-  
-    ranCount[randGenIndex]++;
-
-    let randCharIndex = Math.floor(math.random()) * genPool[randGenIndex].length;
-    return genPool[randGenIndex][randCharIndex]
-  }
-  return renderItem();
-}
 
 var generatePassword = function() {
-  
   passLength();
+  genPass.length = passCrit.length
   passUpCase();
   passLowCase();
   passNum();
   passSpec();
-  var genPass = []
-  genPass.length = passCrit.length
-  genPass.forEach((element, index) => {
-    genPass[index] = random ()
+  var rawPool = [passCrit.uCase, passCrit.lCase, passCrit.num, passCrit.spec]
+  var charPool = rawPool.filter (elements => {
+    return elements !== null;
   })
-  console.log(genPass)
-  finPass = genPass.toString()
-  console.log (finPass)
-  return finPass
+  for (let i = 0; i < genPass.length; i++) {
+    var rdArray = charPool[Math.floor(Math.random() * charPool.length)]
+    var rdChar = rdArray[Math.floor(Math.random() * rdArray.length)]
+    genPass[i] = rdChar
+  }
+  var newPass = genPass.join("")
+  console.log (genPass.length)
+  console.log (charPool)
+  console.log (newPass)
+  return newPass
 }
 
 
