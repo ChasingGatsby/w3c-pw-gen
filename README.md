@@ -10,6 +10,8 @@ All in all, it was a pretty tricky assignment that unexpectedly ended up testing
 That understanding was really what pushed me through the rest of this project.
 
 ## Screenshot
+![chasinggatsby github io_w3c-pw-gen_](https://github.com/ChasingGatsby/w3c-pw-gen/assets/139267337/d4b17fe4-45aa-4626-9540-09da493ed1d7)
+
 
 ## Link to Deployed Application
 https://chasinggatsby.github.io/w3c-pw-gen/
